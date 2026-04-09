@@ -33,8 +33,9 @@ const SocialFeed = () => {
           return {
             ...post,
             author: user || { name: 'Unknown Author', username: 'unknown' },
-            // Include at least one comment as requested, or more if available
-            comments: postComments.slice(0, 3) 
+            comments: postComments.slice(0, 3),
+            // Mocking a natural "time ago" for a more organic feel
+            timeAgo: `${Math.floor(Math.random() * 5) + 1}h ago`
           };
         });
 
@@ -54,7 +55,7 @@ const SocialFeed = () => {
     return (
       <div className="feed-status">
         <div className="loader"></div>
-        <p>Loading your feed...</p>
+        <p>Curating your feed...</p>
       </div>
     );
   }
@@ -62,8 +63,8 @@ const SocialFeed = () => {
   if (error) {
     return (
       <div className="feed-status error">
-        <p>Oops! {error}</p>
-        <button onClick={() => window.location.reload()}>Try Again</button>
+        <p>We couldn't load your feed right now.</p>
+        <button onClick={() => window.location.reload()}>Refresh</button>
       </div>
     );
   }
@@ -78,7 +79,10 @@ const SocialFeed = () => {
             </div>
             <div className="author-info">
               <h3 className="author-name">{post.author.name}</h3>
-              <p className="author-handle">@{post.author.username.toLowerCase()}</p>
+              <div className="author-meta">
+                <span className="author-handle">@{post.author.username.toLowerCase()}</span>
+                <span className="post-time">{post.timeAgo}</span>
+              </div>
             </div>
           </header>
           
@@ -88,8 +92,8 @@ const SocialFeed = () => {
           </div>
 
           <footer className="post-footer">
-            <div className="comment-section">
-              <h4 className="comment-heading">Comments ({post.comments.length})</h4>
+            <h4 className="comment-heading">Discussion</h4>
+            <div className="comment-list">
               {post.comments.map((comment) => (
                 <div key={comment.id} className="comment-item">
                   <span className="comment-user">{comment.email.split('@')[0]}</span>
