@@ -19,7 +19,7 @@
   line-height: 1.6;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: light;
   color: var(--text-primary);
   background-color: var(--bg-primary);
 
@@ -27,19 +27,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: #121417;
-    --bg-secondary: #1a1d21;
-    --text-primary: #fcfaf7;
-    --text-secondary: #a1a6ab;
-    --text-tertiary: #6e747a;
-    --accent: #4ade80; /* Brighter green for dark mode */
-    --accent-soft: rgba(74, 222, 128, 0.1);
-    --border: rgba(252, 250, 247, 0.08);
-  }
 }
 
 body {
@@ -78,12 +65,6 @@ body {
   margin: 0;
   padding: 0;
   line-height: 0.9;
-}
-
-@media (prefers-color-scheme: dark) {
-  .brand-name {
-    color: var(--text-primary);
-  }
 }
 
 .app-tagline {
